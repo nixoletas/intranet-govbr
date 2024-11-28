@@ -1,0 +1,3 @@
+## **Visão de futuro**
+
+  Até 2023, após a finalização do recebimento e ocupação das novas instalações, da ativação e preenchimento de todos os cargos, do recebimento de material previsto em QDM e no Plano de Equipamentos Específicos, da manutenção de uma capacitação contínua do pessoal, gerar as capacidades previstas para a conclusão da implantação do 9º Batalhão de Comunicações e Guerra Eletrônica.

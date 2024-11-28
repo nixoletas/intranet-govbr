@@ -1,0 +1,16 @@
+<div class="modal-overlay" (click)="closeModal()" *ngIf="isVisible">
+  <div class="modal-content" *ngIf="!isLoading; else loadingTemplate">
+    @if (link) {
+      <a [href]="link">
+        <img [src]="imageSrc" alt="Modal Image" fill priority>
+      </a>
+    } @else {
+      <a [href]="link">
+        <img [src]="imageSrc" alt="Modal Image" fill priority>
+      </a>
+    }
+  </div>
+  <ng-template #loadingTemplate>    
+    <div class="br-loading medium" role="progressbar" aria-label="carregando popup"></div>
+  </ng-template>
+</div>

@@ -1,0 +1,42 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+}
+
+.modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    /* Ensure modal content fits within the viewport */
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    z-index: 2001;
+}
+
+.modal-content img {
+    z-index: 99002;
+}
+
+img {
+    border: 0.4rem solid white;
+    border-radius: 1rem;
+    cursor: pointer;
+    max-height: 500px;
+}
+
+a {
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+}

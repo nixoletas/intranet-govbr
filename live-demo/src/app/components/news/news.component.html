@@ -1,0 +1,21 @@
+<div class="row">
+  <figure *ngFor="let item of displayedNews" class="snip1527">
+    <div class="image">
+      <img [src]="'http://localhost:8080' + item.attributes.cover.data.attributes.formats.small.url" alt="News Image" />
+    </div>
+    <figcaption>
+      <div class="date">
+        <span class="day">{{ formatDate(item.attributes.createdAt).day }}</span>
+        <span class="month">{{ formatDate(item.attributes.createdAt).month }}</span>
+      </div>
+      <span class="title">{{ item.attributes.titulo }}</span>
+      <p>{{ item.attributes.subtitulo }}</p>
+    </figcaption>
+    <a [routerLink]="['/noticias', item.id]"></a> <!-- Link dinâmico para detalhes da notícia -->
+  </figure>
+</div>
+<div *ngIf="hasMoreNews()">
+  <div class="py-3"></div>
+  <button *ngIf="isHomeRoute()" class="br-button secondary" (click)="navigateToNoticias()">Mais notícias</button>
+  <button *ngIf="!isHomeRoute()" class="br-button secondary" (click)="loadMoreNews()">Mais notícias</button>
+</div>

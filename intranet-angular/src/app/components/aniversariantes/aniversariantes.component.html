@@ -1,0 +1,9 @@
+<div *ngIf="data.length > 0">
+  <h2 class="tile-header">Aniversariantes do mês de {{ currentMonth }}</h2>
+  <div class="text-center" *ngFor="let item of data">
+    <p>{{ item.attributes['nome'] }} - Dia {{ (item.attributes['data_aniversario']) | date: 'd' }} <span *ngIf="isBirthdayToday(item.attributes['data_aniversario'])">🎂 Dê os parabéns!</span></p>
+  </div>
+</div>
+<div *ngIf="data.length === 0">
+  <h2 class="tile-header">Nenhum aniversariante este mês</h2>
+</div>

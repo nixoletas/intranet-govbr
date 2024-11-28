@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: angular-intranet
+    ports:
+      - "80:80"
+    volumes:
+      - ./cripto:/usr/share/nginx/html/cripto
+      - ./dist/teste/browser:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    environment:
+      - TZ=America/Campo_Grande
+    restart: unless-stopped

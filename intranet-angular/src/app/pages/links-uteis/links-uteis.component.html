@@ -1,0 +1,35 @@
+
+<div class="br-table" title="Tabela irregular 2">
+    <div class="table-header">
+      <div class="top-bar">
+        <div class="table-title text-bold">Links Úteis</div>
+        <div class="actions-trigger text-nowrap">
+          <div class="br-list" id="target01-7352" role="menu" aria-labelledby="button-dropdown-density" hidden="hidden">
+            <button class="br-item" type="button" data-density="small" role="menuitem">Densidade alta
+            </button><span class="br-divider"></span>
+            <button class="br-item" type="button" data-density="medium" role="menuitem">Densidade média
+            </button><span class="br-divider"></span>
+            <button class="br-item" type="button" data-density="large" role="menuitem">Densidade baixa
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table><col>
+  <colgroup span="2"></colgroup>
+  <colgroup span="3"></colgroup>
+      <thead>
+        <tr>
+          <th  rowspan="1" scope="rowgroup"><strong>Link</strong></th>
+          <th colspan="1" scope="colgroup"><strong>Descrição</strong></th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of linkItems">
+        <tr>
+          <td><a [href]="item.route" target="_blank"><i [class]="item.iconClass"></i>{{item.label}}</a></td>
+          <td>{{item.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

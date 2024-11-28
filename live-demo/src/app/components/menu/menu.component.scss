@@ -1,0 +1,60 @@
+.menu-folder {
+    cursor: pointer;
+    border: 0px;
+}
+
+.site-menu {
+    z-index: 1000;
+}
+
+.menu-folder:hover {
+    color: blue;
+}
+
+.menu-item {
+    font-weight: 500;
+}
+
+.site-menu {
+    position: sticky;
+    top: 118px;
+    height: auto;
+    overflow-y: auto;
+    height: 80vh;
+}
+
+/* Estilo para toda a barra de rolagem */
+.site-menu::-webkit-scrollbar {
+    width: 16px;
+    /* largura da barra de rolagem */
+}
+
+/* Estilo para a parte da barra de rolagem */
+.site-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* cor do trilho da barra de rolagem */
+}
+
+/* Estilo para o polegar da barra de rolagem */
+.site-menu::-webkit-scrollbar-thumb {
+    background-color: #bbbbbb;
+    /* cor do polegar da barra de rolagem */
+    border-radius: 10px;
+    /* arredondamento do polegar */
+    border: 3px solid #f1f1f1;
+    /* cor da borda ao redor do polegar */
+}
+
+/* Estilo para o polegar da barra de rolagem ao passar o mouse */
+.site-menu::-webkit-scrollbar-thumb:hover {
+    background: #768697;
+    /* cor do polegar da barra de rolagem ao passar o mouse */
+}
+
+/* Estilo para o polegar da barra de rolagem ao clicar */
+.site-menu::-webkit-scrollbar-thumb:active {
+    background: #003f7f;
+    /* cor do polegar da barra de rolagem ao clicar */
+}
+
+/* menu.component.scss */

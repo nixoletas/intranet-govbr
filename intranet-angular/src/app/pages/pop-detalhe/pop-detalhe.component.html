@@ -1,0 +1,22 @@
+<div style="text-align: justify;">
+    <nav class="br-breadcrumb" aria-label="Breadcrumbs">
+        <ol class="crumb-list" role="list">
+          <li class="crumb home"><a class="br-button circle" routerLink="/"><span class="sr-only">Página inicial</span><i class="fas fa-home"></i></a></li>
+          <li class="crumb"><i class="icon fas fa-chevron-right"></i><a routerLink="/s3/pop">POP S3</a>
+          </li>
+          <li class="crumb" data-active="active"><i class="icon fas fa-chevron-right"></i><span tabindex="0" aria-current="page">{{postagem.attributes.titulo}}</span>
+          </li>
+        </ol>
+      </nav>
+    
+    <div *ngIf="isLoading">
+        <p>Carregando...</p>
+      </div>
+    
+      <div *ngIf="!isLoading && postagem">
+        <h1>{{postagem.attributes.titulo}}</h1>
+        <p class="br-divider"></p>
+        <p class="mb-2" style="text-align: end;"><strong>Publicado em</strong>: {{ formatDate(postagem.attributes.publishedAt).day }}</p>
+        <markdown [data]="postagem.attributes.conteudo"></markdown>
+    </div>
+    </div>

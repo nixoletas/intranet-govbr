@@ -1,0 +1,67 @@
+<h1>Abertura de chamado <span class="text-violet-70"> Simplificado </span><i class="fa-brands fa-telegram"></i></h1>
+
+<div *ngIf="!feedbackSent && !feedbackError">
+  <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+      <p class="label mb-3">Posto/Graduação<span class="text-danger">*</span></p>
+      <div *ngFor="let rank of ranks; let i = index" class="d-inline-block mr-5 mb-1">
+          <div class="br-radio">
+              <input 
+                  [id]="'h-radio-' + i" 
+                  type="radio" 
+                  name="pg" 
+                  [value]="rank" 
+                  [(ngModel)]="feedback.pg" 
+                  required
+              />
+              <label [for]="'h-radio-' + i">{{rank}}</label>
+          </div>
+      </div>
+
+      <div class="my-4"></div>
+      <div class="br-input">
+          <label for="input-default">Nome de guerra<span class="text-danger">*</span></label>
+          <input id="name" name="name" type="number" type="text" [(ngModel)]="feedback.name" required class="text-uppercase" placeholder="seu nome de guerra"/>
+      </div>
+
+      <div class="my-3"></div>
+      <div class="br-input">
+          <label for="phone">Telefone para contato<span class="text-danger">*</span></label>
+          <input mask="(00) 9 0000-0000" [showMaskTyped]="true" name="phone" id="phone" [(ngModel)]="feedback.phone" placeholder="somente números" required>
+      </div>
+
+      <div class="my-3"></div>
+      <div class="br-input">
+          <label for="ramal">Ramal (VoIP)</label>
+          <input prefix="890-" [showMaskTyped]="true" mask="0000" name="ramal" id="ramal" [(ngModel)]="feedback.ramal" placeholder="somente números (ex: 5718)">
+      </div>
+
+      <div class="my-3"></div>
+      <div class="br-textarea large py-3">
+          <label for="textarea-density-id2">Descrição do chamado<span class="text-danger">*</span></label>
+          <textarea id="comment" name="comment" [(ngModel)]="feedback.description" placeholder="descreva seu chamado" required></textarea>
+      </div>
+
+      <button type="submit" [disabled]="!feedbackForm.form.valid" class="br-button primary active mr-3">Enviar</button>
+  </form>
+</div>
+
+<div *ngIf="feedbackSent">
+  <div class="br-message success">
+      <div class="icon"><i class="fas fa-check-circle fa-lg" aria-hidden="true"></i></div>
+      <div class="content" aria-label="Sucesso. Seus dados foram alterados conforme preenchimento do formulário." role="alert">
+          <span class="message-title">Pronto! </span>
+          <span class="message-body">A STI já foi notificada do seu chamado!</span><br>
+          <span class="message-body">Caso não seja atendido em tempo oportuno, entre em contato (890-5718)</span>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="feedbackError">
+  <div class="br-message danger">
+      <div class="icon"><i class="fas fa-times-circle fa-lg" aria-hidden="true"></i></div>
+      <div class="content" aria-label="Erro no envio." role="alert">
+          <span class="message-title">Erro.</span>
+          <span class="message-body"> Falha no servidor. Entre em contato com a STI no Ramal 5718.</span>
+      </div>
+  </div>
+</div>

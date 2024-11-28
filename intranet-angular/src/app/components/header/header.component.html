@@ -1,0 +1,57 @@
+<header class="br-header mb-5" data-sticky="data-sticky">
+  <div class="container-lg">
+    <div class="header-top">
+      <div class="header-logo">
+        <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+        <span class="br-divider vertical"></span>
+        <div class="header-sign" style="color: white;">{{ signature }}</div>
+      </div>
+      <div class="header-actions">
+        <div class="header-links dropdown">
+          <button class="br-button circle small" type="button" data-toggle="dropdown" aria-label="Abrir Acesso Rápido">
+            <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+          </button>
+          <div class="br-list" style="background: transparent;">
+            <div class="header">
+              <div class="title">Acesso Rápido</div>
+            </div>
+            <a *ngFor="let link of links" class="br-item p-3" style=" color: white; background: transparent;" [href]="link.href" [target]="link.target">
+              <i [class]="link?.icon"></i>
+              {{ link.name }}
+            </a>
+            <a class="br-item p-3" style=" color: white; background: transparent;" routerLink="/ramais">
+              <i class="fa fa-phone" style="margin-right: 8px;"></i>Ramais
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header-bottom">
+      <div class="header-menu">
+        <div class="header-menu-trigger" id="header-navigation">
+          <button
+            class="br-button small circle"
+            type="button"
+            aria-label="Menu"
+            data-toggle="menu"
+            data-target="#main-navigation"
+            id="navigation"
+            style="color: white;"
+          >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="header-info">
+          <div class="header-title">
+            <a routerLink="/home">
+            {{ title }}
+          </a>
+          </div>
+          <div class="header-subtitle" style="color: white;">
+            {{ subtitle }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

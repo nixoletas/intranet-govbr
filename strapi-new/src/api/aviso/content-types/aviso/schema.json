@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "avisos",
+  "info": {
+    "singularName": "aviso",
+    "pluralName": "avisos",
+    "displayName": "Aviso",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mensagem": {
+      "type": "text"
+    }
+  }
+}

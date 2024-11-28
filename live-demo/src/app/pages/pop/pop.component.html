@@ -1,0 +1,13 @@
+<h2>POP S3</h2>
+<div class="br-divider"></div>
+<div *ngFor="let item of items; let i = index " style="gap: 4px;">
+    <div class="bg-blue-5 py-1 my-1" style="cursor: pointer; border-radius: 16px;" [routerLink]="['/s3/pop', item.id]">
+        <p class="h4">{{item.attributes.titulo}}</p>
+        <p>Publicado em: {{ formatDate(item.attributes.publishedAt).day }}</p>
+    </div>
+</div>
+
+<!-- Adiciona uma mensagem de loading -->
+<div *ngIf="isLoading">
+  <p>Carregando...</p>
+</div>

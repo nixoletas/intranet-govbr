@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aniversariantes",
+  "info": {
+    "singularName": "aniversariante",
+    "pluralName": "aniversariantes",
+    "displayName": "Aniversariantes"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string"
+    },
+    "data_aniversario": {
+      "type": "date"
+    }
+  }
+}

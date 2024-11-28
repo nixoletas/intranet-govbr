@@ -1,0 +1,57 @@
+<div class="site-menu">
+  <div class="menu-container">
+    <div class="menu-panel">
+      <div class="menu-header">
+        <div class="menu-close">
+          <button class="br-button circle" type="button" aria-label="Menu principal" data-toggle="menu" data-target="#identificador-do-menu">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+          <button class="br-button circle" type="button" aria-label="Fechar o menu" data-dismiss="menu"></button>
+        </div>
+      </div>
+      <nav class="menu-body" role="tree">
+        <ng-container *ngFor="let lvl1 of menuItems">
+          <ng-container *ngIf="!lvl1.children" [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: lvl1 }" role="treeitem"></ng-container>
+          <ng-container *ngIf="lvl1.children" [ngTemplateOutlet]="menuFolder" [ngTemplateOutletContext]="{ $implicit: lvl1 }" role="treeitem"></ng-container>
+        </ng-container>
+      </nav>
+    </div>
+  </div>
+
+  <ng-template #menuFolder let-item>
+    <div class="menu-folder">
+      <ng-container [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: item }" role="treeitem"></ng-container>
+      <ng-container *ngIf="item.children" [ngTemplateOutlet]="menuList" [ngTemplateOutletContext]="{ $implicit: item.children }" role="treeitem"></ng-container>
+    </div>
+  </ng-template>
+
+  <ng-template #menuList let-itemList>
+    <ul>
+      <li *ngFor="let child of itemList">
+        <ng-container [ngTemplateOutlet]="menuItem" [ngTemplateOutletContext]="{ $implicit: child }" role="treeitem"></ng-container>
+        <ng-container *ngIf="child.children" [ngTemplateOutlet]="menuList" [ngTemplateOutletContext]="{ $implicit: child.children }" role="treeitem"></ng-container>
+      </li>
+    </ul>
+  </ng-template>
+
+  <ng-template #menuItem let-item role="tree">
+    <a class="menu-item" *ngIf="item.route && !item.external" [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" role="treeitem">
+      <span class="icon">
+        <i class="fas" [class]="item.iconClass" aria-hidden="true"></i>
+      </span>
+      <span class="content">{{ item.label }}</span>
+    </a>
+    <a class="menu-item" *ngIf="item.route && item.external" [href]="item.route" [target]="item.target" role="treeitem">
+      <span class="icon">
+        <i class="fas" [class]="item.iconClass" aria-hidden="true"></i>
+      </span>
+      <span class="content">{{ item.label }}</span>
+    </a>
+    <a class="menu-item" *ngIf="!item.route" role="treeitem">
+      <span class="icon">
+        <i class="fas" [class]="item.iconClass" aria-hidden="true"></i>
+      </span>
+      <span class="content">{{ item.label }}</span>
+    </a>
+  </ng-template>
+</div>

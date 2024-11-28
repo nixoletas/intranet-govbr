@@ -1,0 +1,98 @@
+<h1>Livro de saída da guarnição<span class="text-blue-50"> online </span><i class="fa fa-plane"></i></h1>
+<div style="display: flex; justify-content: center;">
+<div style="max-width: 800px;" *ngIf="!feedbackSent && !feedbackError">
+  <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+      <p class="label mb-3">Posto/Graduação<span class="text-danger">*</span></p>
+      <div *ngFor="let rank of ranks; let i = index" class="d-inline-block mr-5 mb-1">
+          <div class="br-radio">
+              <input
+                  [id]="'h-radio-' + i"
+                  type="radio"
+                  name="pg"
+                  [value]="rank"
+                  [(ngModel)]="feedback.pg"
+                  required
+              />
+              <label [for]="'h-radio-' + i">{{rank}}</label>
+          </div>
+      </div>
+
+      <div class="my-4"></div>
+      <div class="br-input">
+          <label for="input-default">Nome de guerra<span class="text-danger">*</span></label>
+          <input id="name" name="name" type="number" type="text" [(ngModel)]="feedback.name" required class="text-uppercase" placeholder="seu nome de guerra"/>
+      </div>
+
+      <div class="my-3"></div>
+      <div class="br-input">
+          <label for="phone">Seu número de telefone<span class="text-danger">*</span></label>
+          <input mask="(00) 9 0000-0000" [showMaskTyped]="true" name="phone" id="phone" [(ngModel)]="feedback.phone" placeholder="somente números" required>
+      </div>
+
+      <div class="my-3"></div>
+      <div class="br-input py-3">
+          <label for="comment">Destino<span class="text-danger">*</span></label>
+          <input id="comment" name="comment" [(ngModel)]="feedback.destination" placeholder="Resende, RJ" required>
+      </div>
+
+
+      <div>
+        <!-- [html-validate-disable input-attributes]-->
+        <div #datetimepicker class="br-datetimepicker py-3" data-mode="range" data-type="text">
+          <div class="br-input has-icon">
+            <label for="range-input">Período</label><span class="text-danger">*</span>
+            <input id="range-input" type="text" placeholder="clique no ícone calendário ao lado para selecionar o período >>" name="period" [(ngModel)]="feedback.period" data-input="data-input" required/>
+            <button class="br-button circle small" type="button" aria-label="Abrir Timepicker" data-toggle="data-toggle" id="range-input-btn" tabindex="-1" aria-hidden="true"><i class="fas fa-calendar-alt" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="br-input py-2">
+          <label for="comment">Motivo da viagem<span class="text-danger">*</span></label>
+          <input id="comment" name="comment" [(ngModel)]="feedback.reason" required placeholder="ex: férias">
+      </div>
+
+      <h6>Contato de emergência</h6>
+      <div class="br-input py-2">
+        <label for="comment">Grau de parentesco<span class="text-danger">*</span></label>
+        <input id="comment" name="comment" [(ngModel)]="feedback.emergencydegree" required placeholder="ex: mãe">
+    </div>
+
+    <div class="br-input py-2">
+        <label for="comment">nome do(a) {{feedback.emergencydegree}}<span class="text-danger">*</span></label>
+        <input id="comment" name="comment" [(ngModel)]="feedback.emergencyname" class="text-uppercase" placeholder="nome do seu contato" equired>
+    </div>
+
+    <div class="br-input py-2">
+        <label for="comment">Telefone do contato de emergência<span class="text-danger">*</span></label>
+        <input mask="(00) 9 0000-0000" [showMaskTyped]="true" name="phone" id="phone" [(ngModel)]="feedback.emergencyphone" placeholder="somente números" required>
+    </div>
+
+
+      <button type="submit" [disabled]="!feedbackForm.form.valid" class="br-button primary active mr-3">Enviar</button>
+  </form>
+</div>
+
+<div *ngIf="feedbackSent">
+  <div class="br-message success">
+      <div class="icon"><i class="fas fa-check-circle fa-lg" aria-hidden="true"></i></div>
+      <div class="content" aria-label="Sucesso. Seus dados foram alterados conforme preenchimento do formulário." role="alert">
+          <span class="message-title">Formulário enviado com sucesso! </span>
+          <span class="message-body">Boa viagem!</span>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="feedbackError">
+  <div class="br-message danger">
+      <div class="icon"><i class="fas fa-times-circle fa-lg" aria-hidden="true"></i></div>
+      <div class="content" aria-label="Erro no envio." role="alert">
+          <span class="message-title">Erro.</span>
+          <span class="message-body"> Falha no servidor. Entre em contato com a STI no Ramal 5718.</span>
+      </div>
+  </div>
+</div>
+</div>

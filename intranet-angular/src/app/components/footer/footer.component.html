@@ -1,0 +1,47 @@
+<footer class="br-footer">
+  <div class="container-lg">
+    <div class="br-list horizontal" data-toggle="data-toggle" data-sub="data-sub">
+      <div *ngFor="let section of footerSections" class="col-2">
+        <div class="br-item header">
+          <div class="content text-down-01 text-bold text-uppercase">{{ section.title }}</div>
+          <div class="support"><i class="fas fa-angle-down" aria-hidden="true"></i></div>
+        </div>
+        <div class="br-list"><span class="br-divider d-md-none"></span>
+          <div *ngFor="let item of section.items">
+          <ng-container *ngIf="item.route && item.external; else internalLink">
+          <a class="br-item" [href]="item.route" target="_blank">
+            <div class="content">{{ item.content }}</div>
+          </a>
+          </ng-container>
+          <ng-template #internalLink>
+            <a class="br-item" [routerLink]="item.route">
+              <div class="content">{{ item.content }}</div>
+            </a>
+          </ng-template>
+        </div>
+          <span class="br-divider d-md-none"></span>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-sm-block">
+      <div class="row align-items-end justify-content-between py-5">
+        <div class="col">
+          <div class="social-network">
+            <div class="social-network-title">Redes Sociais</div>
+            <div class="d-flex"><a class="br-button circle" href="https://instagram.com/9bcomge_exercito" target="_blank" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></div>
+          </div>
+        </div>
+        <div class="col assigns text-right"><a href="https://www.eb.mil.br" target="_blank" aria-label="Instagram"><img [src]="image.src" loading="lazy" width="30" [alt]="image.alt"/></a>
+        </div>
+      </div>
+    </div>
+  </div><span class="br-divider my-3"></span>
+  <div class="container-lg">
+    <div class="info">
+      <a href="https://www.gov.br/ds/home" target="_blank">
+      <div class="text-down-01 text-medium pb-3">Edite a mensagem de rodapé em 'footer.component.html' <strong> em '/components/footer'</strong>
+      </div>
+      </a>
+    </div>
+  </div>
+</footer>

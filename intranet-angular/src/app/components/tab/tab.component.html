@@ -1,0 +1,37 @@
+<div class="br-tab">
+  <nav class="tab-nav">
+    <ul>
+      <li class="tab-item active" title="sistemas">
+        <button type="button" data-panel="panel-1-small"><span class="name"><i class="fa fa-laptop"></i> Principal</span></button>
+      </li>
+      <li class="tab-item" title="intranets">
+        <button type="button" data-panel="panel-2-small"><span class="name"><i class="fa fa-handshake"></i> Intranets</span></button>
+      </li>
+      <li class="tab-item" title="apoio">
+        <button type="button" data-panel="panel-4-small"><span class="name"><i class="fa-regular fa-user"></i> Apoio ao usuário</span></button>
+      </li>
+    </ul>
+  </nav>
+  <div class="tab-content" style="display: flex; justify-content: center;">
+    <div class="tab-panel active" id="panel-1-small">
+      <ng-container *ngFor="let link of mainLinks">
+        <a [href]="link.href" [target]="link.target || '_self'"><i [class]="link.icon"></i> {{ link.title }}</a>
+      </ng-container>
+    </div>
+    <div class="tab-panel separate" id="panel-2-small">
+      <ng-container *ngFor="let link of intranets">
+        <a [href]="link.href" [target]="link.target || '_self'"><i [class]="link.icon"></i>{{ link.title }}</a>
+      </ng-container>
+    </div>
+    <div class="tab-panel" id="panel-3-small">
+      <ng-container *ngFor="let link of usefulLinks">
+        <a [href]="link.href" [target]="link.target || '_self'"><i [class]="link.icon"></i> {{ link.title }}</a>
+      </ng-container>
+    </div>
+    <div class="tab-panel" id="panel-4-small">
+      <ng-container *ngFor="let link of userHelp">
+        <a [href]="link.href" [target]="link.target || '_self'"><i [class]="link.icon"></i> {{ link.title }}</a>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div *ngIf="isLoading()">
+  <main>
+    <ul class="o-vertical-spacing o-vertical-spacing--l">
+      <li class="blog-post o-media">
+        <div class="o-media__figure">
+          <span class="skeleton-box" style="width:1000px;height:500px;"></span>
+        </div>
+      </li>
+    </ul>
+  </main>
+</div>
+
+<div *ngIf="!isLoading()">
+  <div class="row justify-content-center">
+    <div class="col-sm-11 col-xl-11">
+      <div #carousel class="br-carousel" data-stage="in" data-circular="true" data-mobile-nav="" aria-label="Carrossel de Exemplo" aria-roledescription="carousel"
+           (mouseenter)="pauseAutoSlide()" (mouseleave)="resumeAutoSlide()">
+           <div class="carousel-button">
+             <button class="br-button carousel-btn-prev terciary circle" type="button" aria-label="Anterior" (click)="prevSlide()">
+               <i class="fas fa-chevron-left" aria-hidden="true"></i>
+             </button>
+           </div>
+           <div class="carousel-stage">
+             <div *ngFor="let item of items(); let i = index">
+               <div *ngIf="i === currentIndex()" [attr.active]="'active'" class="carousel-page" role="group" aria-roledescription="slide" aria-live="polite">
+                 <div class="carousel-content bg-blue-10">
+                   <div *ngIf="!item.link; else linkTemplate" class="titulo">
+                     <h3>{{item.title}}</h3>
+                   </div>
+                   <ng-template #linkTemplate>
+                     <div class="titulo">
+                       <h3><a [href]="item.link" target="_blank" class="text-violet-10"><i class="fa fa-link"></i>{{item.title}}</a></h3>
+                     </div>
+                   </ng-template>
+                   <div class="h3 carousel-title">
+                     <img [src]="item.image" alt="carousel image" width="1150">
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+           <div class="carousel-button">
+             <div class="timer-display">
+               {{countdown()}}s
+             </div>
+             <button class="br-button carousel-btn-next terciary circle" type="button" aria-label="Próximo" (click)="nextSlide()">
+               <i class="fas fa-chevron-right" aria-hidden="true"></i>
+             </button>
+           </div>
+           <div class="carousel-step">
+             <nav class="br-step" data-initial="1" data-type="simple" role="none">
+               <div class="step-progress" role="listbox" aria-orientation="horizontal" aria-label="Lista de Opções">
+                 <button *ngFor="let item of items(); let i = index" class="step-progress-btn" [ngClass]="{'active': i === currentIndex()}" role="option" [attr.aria-posinset]="i + 1" [attr.aria-setsize]="items().length" type="button">
+                   <span class="step-info">banner{{ i + 1 }}</span>
+                 </button>
+               </div>
+             </nav>
+           </div>
+         </div>
+       </div>
+     </div>
+</div>

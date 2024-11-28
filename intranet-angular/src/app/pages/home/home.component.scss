@@ -1,0 +1,30 @@
+.blue {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.tile-header {
+    font-weight: 500;
+    color: #0c326f;
+}
+
+.modais {
+    z-index: 1000;
+    display: flex;
+    max-width: 300px;
+    flex-direction: column;
+    position: absolute;
+    gap: 1rem;
+    right: 24px;
+    top: 10rem;
+    opacity: 0; /* Começa invisível */
+    animation: fadeIn 0.5s ease-in-out forwards; /* Aplica a animação */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,20 @@
+.main-icones-div {
+    margin: 12px;
+    margin-left: 24px;
+    margin-right: 24px;
+    transition: all 100ms;
+}
+
+.main-icones-div:hover {
+    scale: 105%;
+    margin: 12px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.main-icones {
+    border: 0px;
+    font-size: large;
+    transition: all 100ms;
+    outline: none;
+}

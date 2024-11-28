@@ -1,0 +1,16 @@
+<div class="col-auto diminuir">
+  <div *ngFor="let item of items" class="br-magic-button main-icones-div">
+    <i [class]="item.icon" aria-hidden="true"></i>
+    <ng-container *ngIf="item.route && item.external; else internalLink">
+      <a class="menu-item" [href]="item.route" target="_blank" [attr.aria-label]="item.name">
+        <button class="main-icones" type="button">{{item.name}}</button>
+      </a>
+    </ng-container>
+    <ng-template #internalLink>
+      <a class="menu-item" *ngIf="item.route" [routerLink]="item.route" [attr.aria-label]="item.name">
+        <button class="main-icones" type="button">{{item.name}}</button>
+      </a>
+      <span *ngIf="!item.route">{{item.name}}</span>
+    </ng-template>
+  </div>
+</div>

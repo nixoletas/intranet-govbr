@@ -1,0 +1,82 @@
+
+<nav class="br-breadcrumb" aria-label="Breadcrumbs">
+    <ol class="crumb-list" role="list">
+      <li class="crumb home"><a class="br-button circle" routerLink="/home"><span class="sr-only">Página inicial</span><i class="fas fa-home"></i></a></li>
+      <li class="crumb"><i class="icon fas fa-chevron-right"></i><a routerLink="/noticias">Notícias</a>
+      </li>
+      <li class="crumb" data-active="active"><i class="icon fas fa-chevron-right"></i><span tabindex="0" aria-current="page">{{ newsItem?.attributes?.titulo }}</span>
+      </li>
+    </ol>
+  </nav>
+  <nav class="br-pagination" aria-label="paginação" data-total="4" data-current="1">
+    <ul>
+      <li>
+        <button (click)="loadPreviousNews()" [disabled]="currentIndex <= 0" class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li>
+        <button (click)="loadNextNews()" [disabled]="currentIndex >= allNews.length - 1" class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte"><i class="fas fa-angle-right" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+  <div class="br-divider"></div>
+
+  
+  <div *ngIf="newsItem" class="pt-3">
+    <h1><strong>{{ newsItem?.attributes?.titulo }}</strong></h1>
+    <div class="br-divider"></div>
+    <p class="p">Publicado em: {{ formatDate(newsItem?.attributes?.publishedAt).day }}/{{ formatDate(newsItem?.attributes?.publishedAt).month }}</p>
+    <div class="br-divider"></div>
+      <markdown [data]="newsItem?.attributes?.content"></markdown>
+
+
+      <div *ngIf="fotos.length > 0">
+        <div class="row">
+          <div class="col-sm-12 col-md-8">
+            <div class="br-carousel" data-circular="true" aria-label="Carrossel de Exemplo" aria-roledescription="carousel">
+              <div class="carousel-button">
+                <button class="br-button carousel-btn-prev terciary circle" type="button" aria-label="Anterior" (click)="prevSlide()"><i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="carousel-stage">
+                  <div *ngFor="let foto of fotos; let i = index">
+                      <div *ngIf="i === fotoIndex" class="carousel-page" [attr.active]="'active'" role="group" aria-roledescription="slide" aria-live="polite">
+                          <div class="carousel-content bg-blue-10">
+                              <img [src]="foto">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="carousel-button">
+                <button class="br-button carousel-btn-next terciary circle" type="button" aria-label="Próximo" (click)="nextSlide()"><i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="carousel-step">
+                  <nav class="br-step" data-initial="1" data-type="simple" role="none">
+                    <div class="step-progress" role="listbox" aria-orientation="horizontal" aria-label="Lista de Opções">
+                      <button *ngFor="let foto of fotos; let i = index" class="step-progress-btn" [ngClass]="{'active': i === fotoIndex}" role="option" [attr.aria-posinset]="i + 1" [attr.aria-setsize]="fotos.length" type="button">
+                        <span class="step-info"></span>
+                      </button>
+                    </div>
+                  </nav>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+  <div class="br-divider"></div>
+  <nav class="br-pagination" aria-label="paginação" data-total="4" data-current="1">
+      <ul>
+        <li>
+          <button (click)="loadPreviousNews()" [disabled]="currentIndex <= 0" class="br-button circle" type="button" data-previous-page="data-previous-page" aria-label="Voltar página"><i class="fas fa-angle-left" aria-hidden="true"></i>
+          </button>
+        </li>
+        <li>
+          <button (click)="loadNextNews()" [disabled]="currentIndex >= allNews.length - 1" class="br-button circle" type="button" data-next-page="data-next-page" aria-label="Página seguinte"><i class="fas fa-angle-right" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
