@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" text-align="justify">
 
 # Intranet GovBR (novo modelo)
 Com Angular & Strapi. Tutorial completo ⭐
